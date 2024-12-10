@@ -1,0 +1,233 @@
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+فرم ثبت‌نام
+{% endblock title %}
+{% block main %}
+{% if request.user.form %}
+<div class="col-md-8 text-center mx-auto">
+  <div class="card card-success">
+      <div class="card-header">
+          <div class="row">
+              <h3 style="font-size: x-large;" class="card-title mb-0 col-12">فرم شما قبلا ثبت شده است.</h3>
+          </div>
+      </div>
+      
+      <form method="post">{% csrf_token %}
+          <div class="card-body">
+              <p class="py-2">
+              شما قبلا فرم را پر کرده‌اید. باید برای دریافت پرینت آن نوبت رزرو کنید.
+              <br><a href="{% url 'auth:reserve-list' %}">رزرو نوبت</a>
+            </p>
+          </div>
+      </form>
+  </div>
+</div>
+{% else %}
+
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 style="margin-left: 70rem; font-size:20px">فرم ثبت‌نام</h3>
+  </div>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <div class="card-body">
+      <div class="row">
+        <div class="form-group col-6">
+          {{ form.type | as_crispy_field}}
+        </div>
+        <div class="form-group col-6">
+          {{ form.name | as_crispy_field}}
+        </div>
+        <div class="form-group col-6">
+          {{ form.lastname | as_crispy_field}}
+        </div>
+        <div class="form-group col-6">
+          {{ form.father_name | as_crispy_field}}
+        </div>
+        <div class="form-group col-6">
+          {{ form.nid | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.creation_certificate | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.birth_localtion | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.date_of_birth_day | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.the_name_of_privous_school | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.religion | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.religion_of_religion | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.student_parent | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.father_first_name | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.father_last_name | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.father_date_of_birth_day | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.level_of_education_father | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.job_father | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.telephone_number_work_location_father | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.work_location_adderss_father | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.father_phone_number | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.father_live | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.mother_first_name | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.mother_last_name | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.mother_date_of_birth_day | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.level_of_education_mother | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.job_mother | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.telephone_number_work_location_mother | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.work_location_adderss_mother | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.mother_phone_number | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.mother_live | as_crispy_field }}
+        </div>
+        <div class="col-6 row" id="ghaim_wrapper" style="display: none;">
+          <div class="form-group col-6">
+            {{ form.ghaim_first_name | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.ghaim_last_name | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.ghaim_date_of_birth_day | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.level_of_education_ghaim | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.job_ghaim | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.telephone_number_work_location_ghaim | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.work_location_adderss_ghaim | as_crispy_field }}
+          </div>
+          <div class="form-group col-6">
+            {{ form.ghaim_phone_number | as_crispy_field }}
+          </div>
+        </div>
+        <div class="form-group col-6">
+          {{ form.street | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.alley | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.alley_alley | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.plaque | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.floor | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.postal_code | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.telephone_number | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.number_of_shad | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.emergensy_phone | as_crispy_field }}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer row">
+      <button type="submit" class="btn btn-success col-2 ml-3"> ارسال اطلاعات </button>
+    </div>
+  </form>
+</div>
+<script>
+    var religion = document.getElementById('id_religion');
+    var student_parent = document.getElementById('id_student_parent');
+    var date_of_birth_day = document.getElementById('id_date_of_birth_day');
+    date_of_birth_day.setAttribute('placeholder', 'مثل: 1389/03/18')
+
+    var date_of_birth_day = document.getElementById('id_father_date_of_birth_day');
+    date_of_birth_day.setAttribute('placeholder', 'مثل: 1389/03/18')
+
+    var date_of_birth_day = document.getElementById('id_mother_date_of_birth_day');
+    date_of_birth_day.setAttribute('placeholder', 'مثل: 1389/03/18')
+
+    var date_of_birth_day = document.getElementById('id_ghaim_date_of_birth_day');
+    date_of_birth_day.setAttribute('placeholder', 'مثل: 1389/03/18')
+
+    religion.addEventListener('input', function () {
+      if (religion.value == "eslam") {
+        document.getElementById("id_religion_of_religion").removeAttribute('disabled');
+      }
+      else {
+        document.getElementById("id_religion_of_religion").setAttribute('disabled', '');
+      }
+    });
+    student_parent.addEventListener('input', function () {
+      if (student_parent.value == "other") {
+        document.getElementById("ghaim_wrapper").style.display = "block"
+      }
+      else {
+        document.getElementById("ghaim_wrapper").style.display = "none"
+      }
+    });
+
+    if (student_parent.value == "other") {
+        document.getElementById("ghaim_wrapper").style.display = "block"
+      }
+    else {
+      document.getElementById("ghaim_wrapper").style.display = "none"
+    }
+    
+    if (religion.value == "eslam") {
+      document.getElementById("id_religion_of_religion").removeAttribute('disabled');
+    }
+    else {
+      document.getElementById("id_religion_of_religion").setAttribute('disabled', '');
+    }
+</script>
+
+{% endif %}
+{% endblock main %}

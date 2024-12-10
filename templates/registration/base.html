@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>شهیدان احسانی</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet"
+    href="{% static 'registration/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.'css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet"
+    href="{% static 'registration/AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/plugins/summernote/summernote-bs4.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="{% static 'registration/AdminLTE/dist/css/custom.css' %}">
+  <!-- Hotjar Tracking Code for Site 5105595 (name missing) -->
+  <!-- Hotjar Tracking Code for https://ehsanischool.pythonanywhere.com/ -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:5105595,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="{% url 'blog:home' %}" class="nav-link">خانه</a>
+        </li>
+        <!-- <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li> -->
+      </ul>
+
+      <ul class="navbar-nav mr-auto-navbav">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    {% include "registration/sidebar.html" %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">{% block title %}عنوان صفحه{% endblock %}</h1>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          {% block main %}
+
+          {% endblock main %}
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer text-center">
+      <strong>سایت اطلاع رسانی دبیرستان متوسطه اول «شهیدان احسانی»</strong>
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="{% static 'registration/AdminLTE/plugins/jquery/jquery.min.js' %}"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{% static 'registration/AdminLTE/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 rtl -->
+  <script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'registration/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- ChartJS -->
+  <script src="{% static 'registration/AdminLTE/plugins/chart.js/Chart.min.js' %}"></script>
+  <!-- Sparkline -->
+  <script src="{% static 'registration/AdminLTE/plugins/sparklines/sparkline.js' %}"></script>
+  <!-- JQVMap -->
+  <script src="{% static 'registration/AdminLTE/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+  <script src="{% static 'registration/AdminLTE/plugins/jqvmap/maps/jquery.vmap.world.js' %}"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="{% static 'registration/AdminLTE/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+  <!-- daterangepicker -->
+  <script src="{% static 'registration/AdminLTE/plugins/moment/moment.min.js' %}"></script>
+  <script src="{% static 'registration/AdminLTE/plugins/daterangepicker/daterangepicker.js' %}"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script
+    src="{% static 'registration/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+  <!-- Summernote -->
+  <script src="{% static 'registration/AdminLTE/plugins/summernote/summernote-bs4.min.js' %}"></script>
+  <!-- overlayScrollbars -->
+  <script
+    src="{% static 'registration/AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'registration/AdminLTE/dist/js/adminlte.js' %}"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="{% static 'registration/AdminLTE/dist/js/pages/dashboard.js' %}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{% static 'registration/AdminLTE/dist/js/demo.js' %}"></script>
+  <script src="https://kit.fontawesome.com/56a07e49d3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

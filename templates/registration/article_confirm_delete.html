@@ -1,0 +1,25 @@
+﻿{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+<p class="text-danger">حذف مقاله</p>
+{% endblock title %}
+{% block main %}
+<div class="col-md-8 text-center mx-auto">
+    <div class="card card-danger">
+        <div class="card-header">
+            <div class="row">
+                <h3 style="font-size: x-large;" class="card-title mb-0 col-12">حذف مقاله</h3>
+            </div>
+        </div>
+        
+        <form method="post">{% csrf_token %}
+            <div class="card-body">
+                <p class="py-2">ایا از حذف مقاله‌ی «  {{object.title }} » از طرف « {% if object.author.get_full_name %}{{object.author.get_full_name }}{% else %}{{object.author.username }}{% endif %} » مطمین هستید؟
+            </div>
+            <div class="card-header">
+                <input class="btn btn-danger" value="حذف" type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main %}

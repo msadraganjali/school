@@ -1,0 +1,10 @@
+<ul class="nav navbar-nav ms-auto py-4 py-lg-0">
+    {% for category in category.children.all  %}
+        <li style="margin-right: 1.2rem; margin-left: 1.2rem; font-size: 2rem !important;" class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4 row" href="{% url 'blog:category' category.id category.slug %}">{{ category.name }}</a>
+            {% if category.children.active %}
+                {% include "blog/partials/category_loop.html" %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

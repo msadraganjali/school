@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+{% block metatags_data %}
+    <meta name="description" content="{{ article.description |striptags|truncatechars:30 }}" />
+    <meta name="author" content="{{ object.author }}" />
+{% endblock metatags_data %}
+{% block title %}{{article.title}}{% endblock title %}
+{% block main %}
+{% load ratings %}
+{% load static %}
+<header class="masthead" style="background-image: url('{{ article.thumbnail.url }}')">
+    <div style="font-family: 'Vazir' !important;" class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1 style="font-size: 40px !important;">{{ article.title }}</h1>
+                    {% if article.is_special %}
+                        <span class="badge badge-custom" style="border-radius: 20%; font-size: 14px;">ویژه</span>
+                    {% endif %}
+                    <time>{{ article.jpublish }}</time>
+                    <div>{% ratings object %}</div>
+                    <div>بازدیدها: {{object.hits.count}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7" style="text-align: justify !important ;">
+            {% if object.is_special %}
+                {% if user.is_authenticated and user.is_special_user or user == object.author or user.is_superuser and user.is_staff %}
+                    {{ article.description |safe|linebreaks }}
+                {% else %}
+                {{ article.description |truncatechars:110|safe|linebreaks }}<p class="alert alert-warning">این مقاله ویژه است و برای مشاهده‌ی آن باید <a href="#" class="alert-link" style="text-decoration: none !important;">اشتراک ویژه تهیه نمایید.</a></p>
+                {% endif %}
+            {% else %}
+                {{ article.description |safe|linebreaks }}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock main %}

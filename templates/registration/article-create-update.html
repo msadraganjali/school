@@ -1,0 +1,69 @@
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+افزودن مقاله
+{% endblock title %}
+{% block main %}
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 style="margin-left: 70rem; font-size:20px">افزودن مقاله</h3>
+  </div>
+  <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <div class="card-body">
+      <div class="row">
+          <div class="col-6">
+            {{ form.title|as_crispy_field }}
+          </div>
+        <div class="form-group col-6">
+          {{ form.slug | as_crispy_field}}
+        </div>
+        <div class="form-group col-12">
+          {{ form.description | as_crispy_field}}
+        </div>
+        <div class="form-group col-6">
+          {{ form.category | as_crispy_field}}
+        </div>
+        <div class="form-group col-6">
+          {{ form.thumbnail | as_crispy_field}}
+          {{ form.publish | as_crispy_field}}
+        </div>
+        {% if user.is_superuser or user.is_staff %}
+        <div class="form-group col-6">
+          {{ form.author | as_crispy_field }}
+        </div>
+        <div class="form-group col-6">
+          {{ form.status | as_crispy_field }}
+        </div>
+        {% else %}
+        <div class="form-group col-6">
+          <div id="div_id_status" class="form-group">
+            <label for="id_status" class=" requiredField">
+              وضعیت<span class="asteriskField">*</span>
+            </label>
+            <div>
+              <select name="status" class="select form-control" required="" id="id_status">
+                <option value="">---------</option>
+                <option value="d">پیش&zwnj;نویس</option>
+                <option value="i">در انظار تایید</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <div class="form-group col-6">
+          {{ form.is_special | as_crispy_field }}
+        </div>
+      </div>
+    </div>
+    <div class="card-footer row">
+      {% if user.is_superuser and request.resolver_match.kwargs.pk %}
+      <button type="submit" class="btn btn-success col-5">تغییر مقاله</button>
+      <div class="col-2"></div>
+      <a href="{% url 'auth:delete' request.resolver_match.kwargs.pk %}" class="btn btn-danger col-5">حذف مقاله</a>
+      {% else %}
+      <button type="submit" class="btn btn-success col-2 ml-3">ارسال مقاله</button>
+      {% endif %}
+    </div>
+  </form>
+</div>
+{% endblock main %}

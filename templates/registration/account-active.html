@@ -1,0 +1,23 @@
+
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+عملیات با موفقیت انجام شد.
+{% endblock title %}
+{% block main %}
+<div class="col-md-8 text-center mx-auto">
+    <div class="card card-success">
+        <div class="card-header">
+            <div class="row">
+                <h3 style="font-size: x-large;" class="card-title mb-0 col-12">فعال شد.</h3>
+            </div>
+        </div>
+        
+        <form method="post">{% csrf_token %}
+            <div class="card-body">
+                <p class="py-2">اکانت شما با موفقیت فعال شد. <br><a href="{% url 'login' %}">ورود</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main %}

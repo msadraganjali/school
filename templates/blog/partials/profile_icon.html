@@ -1,0 +1,9 @@
+{% if user.is_authenticated %}
+    <li style="color: #fff;" class="nav-item nav-link">
+        <a class="nav-link px-lg-3 py-3 py-lg-4 row navbar-brand mt-4 mb-0" href="{% url 'auth:home' %}">حساب کاربری</a>
+    </li>
+{% else %}
+    <li style="color: #fff;" class="nav-item nav-link">
+        <a class="nav-link px-lg-3 py-3 py-lg-4 row navbar-brand mt-4 mb-0" href="{% url 'auth:home' %}">ورود</a>
+    </li>
+{% endif %}
